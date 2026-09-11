@@ -1,0 +1,13 @@
+DeepSeek Harness Desktop - source and documentation package
+Version: 0.1.0
+Created: 2026-09-11 10:35:12 +08:00
+
+Included:
+- README.md, docs/, src/, scripts/, resources/
+- package.json, package-lock.json
+- electron.vite.config.ts, vitest.config.ts, tsconfig*.json, .gitignore
+
+Excluded:
+- node_modules/, out/, release/, build/runtime/
+- smoke-user-data/, smoke-packaged-data/, smoke-evidence-v1/
+- .git/, logs, local environment files

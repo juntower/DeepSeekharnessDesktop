@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:;" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeepSeek Harness</title>
+  </head>
+  <body class="shell-body">
+    <header class="command-bar" id="command-bar">
+      <div class="brand-lockup">
+        <span class="brand-sigil" aria-hidden="true"><i></i></span>
+        <span class="brand-copy">
+          <span class="brand-kicker">DEEPSEEK HARNESS</span>
+          <strong>CONTROL DECK</strong>
+        </span>
+      </div>
+
+      <section class="telemetry-strip" aria-label="服务状态">
+        <div class="telemetry-cell telemetry-phase">
+          <span class="status-lamp" data-role="lamp"></span>
+          <span class="telemetry-text">
+            <small>服务</small>
+            <b data-role="phase">初始化</b>
+          </span>
+        </div>
+        <div class="telemetry-cell telemetry-port">
+          <small>PORT</small>
+          <b data-role="port">----</b>
+        </div>
+        <div class="telemetry-cell telemetry-version">
+          <small>RUNTIME</small>
+          <b data-role="version">—</b>
+        </div>
+        <div class="telemetry-cell telemetry-network">
+          <small>NETWORK</small>
+          <b data-role="network">检测中</b>
+        </div>
+        <div class="telemetry-cell telemetry-update">
+          <small>UPDATE</small>
+          <b data-role="update">空闲</b>
+        </div>
+      </section>
+
+      <nav class="command-actions" aria-label="快捷操作">
+        <button class="icon-command" type="button" data-command="settings" title="设置">SET</button>
+        <button class="icon-command" type="button" data-command="external" title="在外部浏览器打开">EXT</button>
+        <button class="icon-command icon-command--accent" type="button" data-command="restart" title="重启服务">RST</button>
+        <span class="command-divider" aria-hidden="true"></span>
+        <button class="window-command" type="button" data-window="minimize" title="最小化"><span></span></button>
+        <button class="window-command" type="button" data-window="maximize" title="最大化"><span></span></button>
+        <button class="window-command window-command--close" type="button" data-window="close" title="关闭到托盘"><span></span></button>
+      </nav>
+    </header>
+    <div class="shell-error" data-role="shell-error" role="status" aria-live="polite"></div>
+    <script type="module" src="./index.ts"></script>
+  </body>
+</html>

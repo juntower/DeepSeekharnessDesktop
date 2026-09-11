@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:;" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeepSeek Harness · Service</title>
+  </head>
+  <body class="service-body">
+    <main class="service-stage">
+      <div class="scanline" aria-hidden="true"></div>
+      <section class="service-card" data-phase="starting">
+        <div class="machine-mark" aria-hidden="true">
+          <span class="orbit orbit--outer"></span>
+          <span class="orbit orbit--inner"></span>
+          <span class="machine-core"></span>
+        </div>
+        <div class="service-copy">
+          <p class="eyebrow">DEEPSEEK HARNESS / LOCAL RUNTIME</p>
+          <h1 data-role="title">正在建立本地链路</h1>
+          <p class="message" data-role="message">正在准备服务运行时…</p>
+          <div class="progress-track" aria-hidden="true"><i></i></div>
+          <dl class="service-meta">
+            <div><dt>MODE</dt><dd data-role="phase">STARTING</dd></div>
+            <div><dt>BOUNDARY</dt><dd>127.0.0.1</dd></div>
+            <div><dt>CONTROL</dt><dd>TRAY / IPC</dd></div>
+          </dl>
+        </div>
+      </section>
+      <p class="service-footnote">服务就绪后，此区域将自动切换为 DeepSeek Harness Web 控制台。</p>
+    </main>
+    <script type="module" src="./index.ts"></script>
+  </body>
+</html>

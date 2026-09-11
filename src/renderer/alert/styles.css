@@ -1,0 +1,27 @@
+.alert-body { width: 100vw; height: 100vh; overflow: hidden; background: transparent; user-select: none; }
+.alert-card { --alert-color: var(--signal); position: relative; width: 100%; height: 100%; padding: 18px 18px 20px 24px; border: 1px solid #31453d; border-left: 3px solid var(--alert-color); background: linear-gradient(135deg, rgb(18 27 23 / 98%), rgb(8 12 10 / 99%)); box-shadow: 0 24px 70px rgb(0 0 0 / 62%), inset 0 1px rgb(255 255 255 / 4%); animation: alert-enter 260ms cubic-bezier(.2, .9, .25, 1); }
+.alert-card[data-kind="warning"] { --alert-color: var(--amber); }
+.alert-card[data-kind="danger"] { --alert-color: var(--danger); }
+.alert-card[data-kind="success"] { --alert-color: var(--blue); }
+.alert-rail { position: absolute; top: 0; bottom: 0; left: 5px; width: 1px; background: linear-gradient(transparent, var(--alert-color), transparent); opacity: 0.35; }
+.alert-header { display: grid; grid-template-columns: 34px 1fr 28px; gap: 11px; align-items: center; }
+.alert-icon { display: grid; width: 30px; height: 30px; place-items: center; border: 1px solid color-mix(in srgb, var(--alert-color), transparent 48%); border-radius: 50%; background: color-mix(in srgb, var(--alert-color), transparent 90%); }
+.alert-icon span { width: 7px; height: 7px; border-radius: 50%; background: var(--alert-color); box-shadow: 0 0 10px var(--alert-color); }
+.alert-kicker { margin: 0 0 3px; color: var(--alert-color); font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.13em; }
+.alert-header h1 { margin: 0; font-family: var(--font-display); font-size: 18px; font-weight: 680; letter-spacing: 0.03em; }
+.dismiss { width: 28px; height: 28px; border: 0; border-radius: 3px; background: transparent; color: #94a69e; cursor: pointer; font-size: 21px; line-height: 1; }
+.dismiss:hover { background: #22312b; color: #fff; }
+.alert-message { margin: 14px 0 0 45px; color: #dbe6e0; font-size: 13px; line-height: 1.55; }
+.alert-detail { margin: 7px 0 0 45px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.alert-actions { display: flex; gap: 9px; margin: 16px 0 0 45px; }
+.alert-actions.is-single { justify-content: flex-end; }
+.action { min-height: 29px; padding: 0 14px; border: 1px solid #385047; border-radius: 3px; background: #17211d; color: #bdcbc4; cursor: pointer; font-family: var(--font-display); font-size: 11px; letter-spacing: 0.06em; }
+.action--primary { border-color: color-mix(in srgb, var(--alert-color), transparent 38%); color: var(--alert-color); }
+.action:hover { border-color: var(--alert-color); color: #fff; }
+.alert-timer { position: absolute; right: 18px; bottom: 4px; left: 24px; height: 1px; overflow: hidden; background: #1d2824; }
+.alert-timer i { display: block; width: 100%; height: 100%; background: var(--alert-color); opacity: 0.55; transform-origin: left; animation: timer 9s linear forwards; }
+.alert-card[data-kind="danger"] .alert-timer i { animation-duration: 15s; }
+.alert-body.is-leaving .alert-card { animation: alert-leave 180ms ease-in forwards; }
+@keyframes alert-enter { from { opacity: 0; transform: translate(24px, 18px) scale(0.97); } }
+@keyframes alert-leave { to { opacity: 0; transform: translateX(28px); } }
+@keyframes timer { to { transform: scaleX(0); } }

@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:;" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeepSeek Harness Desktop · 设置</title>
+  </head>
+  <body class="settings-body">
+    <header class="titlebar">
+      <div class="title-brand">
+        <span class="title-sigil" aria-hidden="true"><i></i></span>
+        <div>
+          <small>DEEPSEEK HARNESS DESKTOP</small>
+          <strong>控制与维护中心</strong>
+        </div>
+      </div>
+      <div class="title-status">
+        <span class="status-dot" data-role="status-dot"></span>
+        <span data-role="status-summary">正在读取系统状态…</span>
+      </div>
+      <div class="window-controls">
+        <button type="button" data-window="minimize" aria-label="最小化"><span></span></button>
+        <button type="button" data-window="maximize" aria-label="最大化"><span></span></button>
+        <button type="button" data-window="close" aria-label="关闭"><span></span></button>
+      </div>
+    </header>
+
+    <div class="settings-layout">
+      <aside class="sidebar">
+        <nav aria-label="设置导航">
+          <a class="nav-item is-active" href="#overview"><span>01</span>运行总览</a>
+          <a class="nav-item" href="#connection"><span>02</span>连接与密钥</a>
+          <a class="nav-item" href="#service"><span>03</span>Harness 服务</a>
+          <a class="nav-item" href="#notifications"><span>04</span>通知策略</a>
+          <a class="nav-item" href="#updates"><span>05</span>更新与安全</a>
+          <a class="nav-item" href="#maintenance"><span>06</span>维护工具</a>
+        </nav>
+        <div class="sidebar-foot">
+          <span>APP</span>
+          <b data-role="app-version">—</b>
+          <span>RUNTIME</span>
+          <b data-role="runtime-version-sidebar">—</b>
+        </div>
+      </aside>
+
+      <main class="settings-content">
+        <section class="intro">
+          <div>
+            <p class="eyebrow">LOCAL CONTROL PLANE</p>
+            <h1>托盘常驻辅助设置</h1>
+            <p class="intro-copy">管理本地 DeepSeek Harness 运行时、启动策略、凭证注入和自动更新。密钥不会发送到界面壳层，仅通过子进程环境变量注入。</p>
+          </div>
+          <button class="button button--primary" type="button" data-action="save-settings">保存更改</button>
+        </section>
+
+        <div class="feedback" data-role="feedback" role="status" aria-live="polite"></div>
+
+        <section class="panel panel--overview" id="overview">
+          <div class="panel-heading">
+            <div><span class="panel-index">01</span><h2>运行总览</h2></div>
+            <button class="button button--quiet" type="button" data-action="refresh">刷新</button>
+          </div>
+          <div class="status-grid">
+            <article class="status-tile status-tile--wide">
+              <span>服务阶段</span>
+              <strong data-role="phase">—</strong>
+              <p data-role="phase-message">等待状态数据</p>
+            </article>
+            <article class="status-tile"><span>本地端口</span><strong class="mono" data-role="port">—</strong></article>
+            <article class="status-tile"><span>进程 PID</span><strong class="mono" data-role="pid">—</strong></article>
+            <article class="status-tile"><span>网络计费</span><strong data-role="network">—</strong></article>
+            <article class="status-tile"><span>应用更新</span><strong data-role="app-update">—</strong></article>
+            <article class="status-tile"><span>Harness 更新</span><strong data-role="dsh-update">—</strong></article>
+          </div>
+          <div class="runtime-strip">
+            <div><span>版本</span><b data-role="runtime-version">未安装</b></div>
+            <div><span>通道</span><b data-role="runtime-channel">—</b></div>
+            <div><span>安装时间</span><b data-role="runtime-installed">—</b></div>
+            <div class="runtime-path"><span>项目路径</span><b class="mono" data-role="runtime-path">—</b></div>
+          </div>
+          <div class="service-actions">
+            <button class="button button--primary" type="button" data-action="start-dsh">启动服务</button>
+            <button class="button button--quiet" type="button" data-action="restart-dsh">重启服务</button>
+            <button class="button button--quiet" type="button" data-action="stop-dsh">停止服务</button>
+            <button class="button button--ghost" type="button" data-action="open-external">在浏览器打开</button>
+          </div>
+        </section>
+
+        <section class="panel" id="connection">
+          <div class="panel-heading"><div><span class="panel-index">02</span><h2>连接与密钥</h2></div></div>
+          <p class="panel-description">密钥使用操作系统安全存储加密，并在启动 Harness 子进程时注入。留空表示保留现有密钥，不会在页面中回显。</p>
+          <div class="form-grid">
+            <label class="field field--wide"><span>DeepSeek API Key <em data-role="deepseek-key-state">未配置</em></span><input type="password" autocomplete="off" data-setting="deepseekApiKey" placeholder="sk-…" /><small>写入 <code>DEEPSEEK_API_KEY</code></small></label>
+            <label class="field field--wide"><span>DeepSeek Base URL</span><input type="url" data-secret-setting="deepseekBaseUrl" placeholder="https://api.deepseek.com" /><small>留空使用官方默认地址</small></label>
+            <label class="field field--wide"><span>Gateway API Key <em data-role="gateway-key-state">未配置</em></span><input type="password" autocomplete="off" data-setting="gatewayApiKey" placeholder="网关密钥" /><small>写入 <code>AI_GATEWAY_API_KEY</code></small></label>
+            <label class="field"><span>Gateway Base URL</span><input type="url" data-secret-setting="gatewayBaseUrl" placeholder="https://gateway.example/v1" /></label>
+            <label class="field"><span>Gateway Model</span><input type="text" data-secret-setting="gatewayModel" placeholder="模型标识" /></label>
+            <label class="field field--wide"><span>额外环境变量（JSON）</span><textarea rows="5" spellcheck="false" data-secret-setting="extraEnvironment" placeholder='{"HTTP_PROXY":"http://127.0.0.1:7890"}'></textarea><small>仅接受合法的环境变量名；将覆盖主进程环境中同名变量。</small></label>
+          </div>
+          <div class="inline-actions">
+            <button class="button button--primary" type="button" data-action="save-secrets">保存连接配置</button>
+            <button class="button button--quiet" type="button" data-action="clear-deepseek-key">清除 DeepSeek Key</button>
+            <button class="button button--quiet" type="button" data-action="clear-gateway-key">清除 Gateway Key</button>
+          </div>
+        </section>
+
+        <section class="panel" id="service">
+          <div class="panel-heading"><div><span class="panel-index">03</span><h2>Harness 服务</h2></div></div>
+          <div class="form-grid form-grid--three">
+            <label class="field"><span>发布通道</span><select data-setting="dsh.channel"><option value="latest">latest</option><option value="next">next</option><option value="alpha">alpha</option></select></label>
+            <label class="field"><span>固定版本</span><input type="text" data-setting="dsh.pinnedVersion" placeholder="留空跟随通道" /></label>
+            <label class="field"><span>首选端口</span><input type="number" min="1024" max="65535" data-setting="dsh.preferredPort" /></label>
+            <label class="field"><span>启动超时（秒）</span><input type="number" min="10" max="600" data-setting="dsh.startupTimeoutSeconds" /></label>
+            <label class="field"><span>健康检查间隔（秒）</span><input type="number" min="5" max="600" data-setting="dsh.healthIntervalSeconds" /></label>
+            <label class="field"><span>优雅退出时间（秒）</span><input type="number" min="1" max="60" data-setting="dsh.gracefulStopSeconds" /></label>
+            <label class="field"><span>窗口崩溃恢复次数</span><input type="number" min="0" max="100" data-setting="dsh.maxRestarts" /></label>
+            <label class="field"><span>恢复统计窗口（分钟）</span><input type="number" min="1" max="1440" data-setting="dsh.restartWindowMinutes" /></label>
+            <label class="field field--wide"><span>附加启动参数</span><input type="text" data-setting="dsh.extraArgs" placeholder="以空格分隔，参数和值都需明确写出" /></label>
+          </div>
+          <div class="switch-grid">
+            <label class="switch"><input type="checkbox" data-setting="dsh.managed" /><span></span><div><b>托管运行时</b><small>由本应用安装并管理 Harness</small></div></label>
+            <label class="switch"><input type="checkbox" data-setting="dsh.autoInstall" /><span></span><div><b>自动安装</b><small>首次运行或版本缺失时自动安装</small></div></label>
+            <label class="switch"><input type="checkbox" data-setting="dsh.autoRestart" /><span></span><div><b>崩溃自动恢复</b><small>按指数退避策略重启服务</small></div></label>
+          </div>
+        </section>
+
+        <section class="panel" id="notifications">
+          <div class="panel-heading"><div><span class="panel-index">04</span><h2>启动与通知</h2></div></div>
+          <div class="switch-grid switch-grid--two">
+            <label class="switch"><input type="checkbox" data-setting="launchAtLogin" /><span></span><div><b>开机自启</b><small>登录 Windows 后进入托盘</small></div></label>
+            <label class="switch"><input type="checkbox" data-setting="startMinimized" /><span></span><div><b>启动时最小化</b><small>不自动弹出主窗口</small></div></label>
+            <label class="switch"><input type="checkbox" data-setting="closeToTray" /><span></span><div><b>关闭到托盘</b><small>点击关闭按钮时隐藏窗口</small></div></label>
+            <label class="switch"><input type="checkbox" data-setting="minimizeToTray" /><span></span><div><b>最小化到托盘</b><small>最小化时从任务栏隐藏窗口</small></div></label>
+            <label class="switch"><input type="checkbox" data-setting="notifications.onStart" /><span></span><div><b>服务就绪提示</b><small>首次健康检查通过时通知</small></div></label>
+            <label class="switch"><input type="checkbox" data-setting="notifications.onCrash" /><span></span><div><b>崩溃告警</b><small>异常退出时弹出告警条</small></div></label>
+            <label class="switch"><input type="checkbox" data-setting="notifications.onMeteredNetwork" /><span></span><div><b>计费网络提醒</b><small>切换到计量网络时提醒</small></div></label>
+            <label class="switch"><input type="checkbox" data-setting="notifications.onUpdate" /><span></span><div><b>更新提醒</b><small>发现可用更新时通知</small></div></label>
+          </div>
+        </section>
+
+        <section class="panel" id="updates">
+          <div class="panel-heading"><div><span class="panel-index">05</span><h2>更新与签名</h2></div></div>
+          <div class="form-grid">
+            <label class="field field--wide"><span>应用更新 Feed URL</span><input type="url" data-setting="updates.appFeedUrl" placeholder="https://updates.example/deepseek-harness-desktop/" /><small>留空或使用示例域名时禁用应用自动更新。</small></label>
+            <label class="field field--wide"><span>Windows 发布者证书指纹</span><input type="text" class="mono" data-setting="security.windowsPublisherThumbprint" placeholder="40 位 SHA-1 指纹" /><small>配置后，启动时校验应用 Authenticode 签名。</small></label>
+          </div>
+          <label class="switch switch--standalone"><input type="checkbox" data-setting="updates.dshAutoCheck" /><span></span><div><b>自动检查 Harness 更新</b><small>启动后查询 npm registry 的发布通道</small></div></label>
+          <div class="update-cards">
+            <article><span>APPLICATION</span><strong data-role="app-update-detail">尚未检查</strong><div><button class="button button--quiet" type="button" data-action="check-app-update">检查更新</button><button class="button button--primary" type="button" data-action="install-app-update">下载并安装</button></div></article>
+            <article><span>DEEPSEEK HARNESS</span><strong data-role="dsh-update-detail">尚未检查</strong><div><button class="button button--quiet" type="button" data-action="check-dsh-update">检查更新</button><button class="button button--primary" type="button" data-action="install-dsh-update">安装并重启</button></div></article>
+          </div>
+        </section>
+
+        <section class="panel" id="maintenance">
+          <div class="panel-heading"><div><span class="panel-index">06</span><h2>维护工具</h2></div></div>
+          <div class="maintenance-grid">
+            <article>
+              <h3>路径与日志</h3>
+              <dl><dt>应用路径</dt><dd class="mono" data-role="install-path">—</dd><dt>用户数据</dt><dd class="mono" data-role="user-data-path">—</dd></dl>
+              <div class="inline-actions"><button class="button button--quiet" type="button" data-action="open-logs">打开日志目录</button><button class="button button--quiet" type="button" data-action="check-network">检测计费网络</button></div>
+            </article>
+            <article>
+              <h3>回收站</h3>
+              <p>将绝对路径文件或目录安全移入系统回收站，不执行永久删除。</p>
+              <label class="field"><span>目标绝对路径</span><input type="text" class="mono" data-role="trash-path" placeholder="C:\Users\…" /></label>
+              <button class="button button--danger" type="button" data-action="trash-item">移入回收站</button>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel log-panel">
+          <div class="panel-heading"><div><span class="panel-index">LOG</span><h2>最近运行日志</h2></div></div>
+          <pre data-role="logs">暂无日志。</pre>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="./index.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:;" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeepSeek Harness Alert</title>
+  </head>
+  <body class="alert-body">
+    <article class="alert-card" data-kind="info">
+      <div class="alert-rail" aria-hidden="true"></div>
+      <header class="alert-header">
+        <div class="alert-icon" aria-hidden="true"><span></span></div>
+        <div>
+          <p class="alert-kicker" data-role="kind">SYSTEM NOTICE</p>
+          <h1 data-role="title">通知</h1>
+        </div>
+        <button class="dismiss" type="button" data-role="dismiss" aria-label="关闭通知">×</button>
+      </header>
+      <p class="alert-message" data-role="message"></p>
+      <p class="alert-detail" data-role="detail"></p>
+      <div class="alert-actions" data-role="actions">
+        <button class="action action--primary" type="button" data-role="action">处理</button>
+        <button class="action action--quiet" type="button" data-role="dismiss-secondary">稍后</button>
+      </div>
+      <div class="alert-timer" aria-hidden="true"><i></i></div>
+    </article>
+    <script type="module" src="./index.ts"></script>
+  </body>
+</html>
